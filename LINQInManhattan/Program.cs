@@ -6,7 +6,12 @@ namespace LINQInManhattan
     {
         static void Main(string[] args)
         {
-            Console.WriteLine("Hello World!");
+            VisitManhattan();
+        }
+
+        static void VisitManhattan()
+        {
+
         }
     }
 }
