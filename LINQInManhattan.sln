@@ -5,6 +5,11 @@ VisualStudioVersion = 15.0.28307.168
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LINQInManhattan", "LINQInManhattan\LINQInManhattan.csproj", "{414A36ED-FDFB-4601-A00F-0C991C2C4391}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{327D168E-DF4A-471F-BC2D-D36DCADF85DC}"
+	ProjectSection(SolutionItems) = preProject
+		data.json = data.json
+	EndProjectSection
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
