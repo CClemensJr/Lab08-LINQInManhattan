@@ -14,7 +14,13 @@ namespace LINQInManhattan
 
         static void VisitManhattan()
         {
-            // Read JSON from File, can use the normal streamreader way to read in as a string 
+            // Read JSON from File, can use the normal streamreader way to read in as a string
+            using (StreamReader reader = File.OpenText("data.json"))
+            {
+                JObject o = (JObject)JToken.ReadFrom(new JsonTextReader(reader));
+            }
+
+            
             // Output all of the neighborhoods in dataset
             // Filter out all neighborhoods with no names
             // Remove duplicates
