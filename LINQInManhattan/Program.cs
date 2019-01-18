@@ -3,7 +3,9 @@ using Newtonsoft.Json.Linq;
 using System.IO;
 using Newtonsoft.Json;
 using LINQInManhattan.Classes;
-
+using System.Collections;
+using System.Collections.Generic;
+using System.Linq;
 
 namespace LINQInManhattan
 {
@@ -20,16 +22,26 @@ namespace LINQInManhattan
         static void VisitManhattan()
         {
             // Read JSON from File, can use the normal streamreader way to read in as a string
-            string json = File.ReadAllText("../../../../data.json");
+            string jsonText = File.ReadAllText("../../../../data.json");
 
-            //Console.WriteLine(json);
+            JObject json = JObject.Parse(jsonText);
 
-            RootObject root = JsonConvert.DeserializeObject<RootObject>(json);
+            IList<JToken> results = json["type"]["features"].Children().ToList();
 
-            foreach (var feature in root.features)
+            IList<RootObject> searchResults = new List<RootObject>();
+            foreach (JToken result in results)
             {
-                Console.WriteLine(feature);
+                RootObject root = result.ToObject<RootObject>();
+                root.Add(root);
             }
+
+
+            //RootObject root = JsonConvert.DeserializeObject<RootObject>(json);
+
+            //foreach (var feature in root.features)
+            //{
+            //    Console.WriteLine(feature);
+            //}
             // Output all of the neighborhoods in dataset
             // Filter out all neighborhoods with no names
             // Remove duplicates
