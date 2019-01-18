@@ -4,7 +4,7 @@ using System.Text;
 
 namespace LINQInManhattan.Classes
 {
-    class Properties
+    public class Properties
     {
         public string zip { get; set; }
         public string city { get; set; }

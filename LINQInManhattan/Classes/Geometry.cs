@@ -4,7 +4,7 @@ using System.Text;
 
 namespace LINQInManhattan.Classes
 {
-    class Geometry
+    public class Geometry
     {
         public string type { get; set; }
         public List<double> coordinates { get; set; }
