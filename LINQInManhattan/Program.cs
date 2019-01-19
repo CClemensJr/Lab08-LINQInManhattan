@@ -23,29 +23,28 @@ namespace LINQInManhattan
         {
             // Read JSON from File, can use the normal streamreader way to read in as a string
             string jsonText = File.ReadAllText("../../../../data.json");
+            RootObject manhattan = JsonConvert.DeserializeObject<RootObject>(jsonText);
 
-            JObject json = JObject.Parse(jsonText);
-
-            IList<JToken> results = json["type"]["features"].Children().ToList();
-
-            IList<RootObject> searchResults = new List<RootObject>();
-            foreach (JToken result in results)
-            {
-                RootObject root = result.ToObject<RootObject>();
-                root.Add(root);
-            }
-
-
-            //RootObject root = JsonConvert.DeserializeObject<RootObject>(json);
-
-            //foreach (var feature in root.features)
-            //{
-            //    Console.WriteLine(feature);
-            //}
             // Output all of the neighborhoods in dataset
+            var neighborhoods = from f in manhattan.features
+                         select f.properties.neighborhood;
+
+            foreach (var neighborhood in neighborhoods)
+            {
+                Console.WriteLine(neighborhood);
+            }
+            
             // Filter out all neighborhoods with no names
+            //var query2 = from neighborhood in neighborhoods
+            //             where neighborhood.Length > 0
+            //             select neighborhood;
+
             // Remove duplicates
+
+
             // Rewrite queries and consolidate into one single query
+
+
             // Rewrite one of these questions using the opposing method (lambda instead of LINQ or vice versa)
 
         }
