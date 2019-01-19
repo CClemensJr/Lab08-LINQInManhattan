@@ -46,9 +46,17 @@ namespace LINQInManhattan
                 Console.WriteLine(neighborhood);
             }
 
+            Console.WriteLine("\n\n ----------------------------------------------------------------------------------------------------\n\n");
+
             // Remove duplicates
+            var query3 = query2.Distinct();
 
+            foreach (var neighborhood in query3)
+            {
+                Console.WriteLine(neighborhood);
+            }
 
+            Console.WriteLine("\n\n ----------------------------------------------------------------------------------------------------\n\n");
             // Rewrite queries and consolidate into one single query
 
 
