@@ -1,10 +1,7 @@
 ﻿using System;
-using Newtonsoft.Json.Linq;
 using System.IO;
 using Newtonsoft.Json;
 using LINQInManhattan.Classes;
-using System.Collections;
-using System.Collections.Generic;
 using System.Linq;
 
 namespace LINQInManhattan
@@ -15,7 +12,7 @@ namespace LINQInManhattan
         {
             VisitManhattan();
 
-            Console.WriteLine("Press any key to exit...");
+            Console.WriteLine("\n\nPress any key to exit...");
             Console.ReadLine();
         }
 
@@ -24,6 +21,7 @@ namespace LINQInManhattan
             // Read JSON from File, can use the normal streamreader way to read in as a string
             string jsonText = File.ReadAllText("../../../../data.json");
             RootObject manhattan = JsonConvert.DeserializeObject<RootObject>(jsonText);
+
 
             // Output all of the neighborhoods in dataset
             var query1 = from f in manhattan.features
@@ -35,6 +33,7 @@ namespace LINQInManhattan
             }
 
             Console.WriteLine("\n\n ----------------------------------------------------------------------------------------------------\n\n");
+
 
            // Filter out all neighborhoods with no names
            var query2 = from neighborhood in query1
@@ -48,6 +47,7 @@ namespace LINQInManhattan
 
             Console.WriteLine("\n\n ----------------------------------------------------------------------------------------------------\n\n");
 
+
             // Remove duplicates
             var query3 = query2.Distinct();
 
@@ -57,7 +57,16 @@ namespace LINQInManhattan
             }
 
             Console.WriteLine("\n\n ----------------------------------------------------------------------------------------------------\n\n");
+
+
             // Rewrite queries and consolidate into one single query
+            var allQueries = from mf in manhattan.features
+                             select mf.properties.neighborhood;
+            //where mf.properties.neighborhood.Distinct()
+
+
+
+            Console.WriteLine("\n\n ----------------------------------------------------------------------------------------------------\n\n");
 
 
             // Rewrite one of these questions using the opposing method (lambda instead of LINQ or vice versa)
