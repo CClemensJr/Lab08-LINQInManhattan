@@ -26,18 +26,25 @@ namespace LINQInManhattan
             RootObject manhattan = JsonConvert.DeserializeObject<RootObject>(jsonText);
 
             // Output all of the neighborhoods in dataset
-            var neighborhoods = from f in manhattan.features
+            var query1 = from f in manhattan.features
                          select f.properties.neighborhood;
 
-            foreach (var neighborhood in neighborhoods)
+            foreach (var neighborhood in query1)
             {
                 Console.WriteLine(neighborhood);
             }
-            
-            // Filter out all neighborhoods with no names
-            //var query2 = from neighborhood in neighborhoods
-            //             where neighborhood.Length > 0
-            //             select neighborhood;
+
+            Console.WriteLine("\n\n ----------------------------------------------------------------------------------------------------\n\n");
+
+           // Filter out all neighborhoods with no names
+           var query2 = from neighborhood in query1
+                        where neighborhood.Length > 0
+                        select neighborhood;
+
+            foreach (var neighborhood in query2)
+            {
+                Console.WriteLine(neighborhood);
+            }
 
             // Remove duplicates
 
