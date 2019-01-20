@@ -59,8 +59,8 @@ namespace LINQInManhattan
             Console.WriteLine("\n\n ----------------------------------------------------------------------------------------------------\n\n");
 
 
-            // Was unable to get neighborhood to appear correctly in console.
             // Rewrite queries and consolidate into one single query
+            // Was unable to get neighborhood to appear correctly in console.
             var allQueries = from mf in manhattan.features
                              let hood = mf.properties.neighborhood
                              where hood.Length > 0
@@ -77,7 +77,15 @@ namespace LINQInManhattan
 
 
             // Rewrite one of these questions using the opposing method (lambda instead of LINQ or vice versa)
+            // Rewrote Query 1
+            var newQuery1 = manhattan.features.Select(s => s.properties.neighborhood);
+      
+            foreach (var neighborhood in newQuery1)
+            {
+                Console.WriteLine(neighborhood);
+            }
 
+            Console.WriteLine("\n\n ----------------------------------------------------------------------------------------------------\n\n");
         }
     }
 }
