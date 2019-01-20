@@ -59,12 +59,19 @@ namespace LINQInManhattan
             Console.WriteLine("\n\n ----------------------------------------------------------------------------------------------------\n\n");
 
 
+            // Was unable to get neighborhood to appear correctly in console.
             // Rewrite queries and consolidate into one single query
             var allQueries = from mf in manhattan.features
-                             select mf.properties.neighborhood;
-            //where mf.properties.neighborhood.Distinct()
+                             let hood = mf.properties.neighborhood
+                             where hood.Length > 0
+                             group hood by hood into updatedHoods
+                             select updatedHoods.Distinct();
 
 
+            foreach (var neighborhood in allQueries)
+            {
+                Console.WriteLine(neighborhood);
+            }
 
             Console.WriteLine("\n\n ----------------------------------------------------------------------------------------------------\n\n");
 
