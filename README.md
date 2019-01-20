@@ -3,16 +3,16 @@
 
 ## summary
 ```
-	The purpose of this application is to answer many questions that users might have about Manhattan, NY.
-	These questions are answered by a method that uses LINQ to read in and filter through JSON data.
+	The purpose of this application is to filter through some JSON data to return a list of all
+	the neighborhoods in Manhattan.
 ```
 
 ## example
-![alt text](https://github.com/CClemensJr/Zoo/blob/master/Assets/zoo.PNG)
+![alt text](https://github.com/CClemensJr/LINQInManhattan/blob/master/Assets/manhattan.PNG)
 
 ## usage
 ```
-	The happy path description goes here.
+	All you need to do is run the application and a list of all the neighborhoods in Manhattan will pop up!
 ```
 
 
