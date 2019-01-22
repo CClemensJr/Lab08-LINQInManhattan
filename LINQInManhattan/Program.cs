@@ -16,6 +16,10 @@ namespace LINQInManhattan
             Console.ReadLine();
         }
 
+
+        /// <summary>
+        /// This method reads in the json data, populates the classes, and displays query results to the console.
+        /// </summary>
         static void VisitManhattan()
         {
             // Read JSON from File, can use the normal streamreader way to read in as a string
@@ -60,17 +64,17 @@ namespace LINQInManhattan
 
 
             // Rewrite queries and consolidate into one single query
-            // Was unable to get neighborhood to appear correctly in console.
-            var allQueries = from mf in manhattan.features
-                             let hood = mf.properties.neighborhood
-                             where hood.Length > 0
-                             group hood by hood into updatedHoods
-                             select updatedHoods.Distinct();
+            // Was unable to get neighborhood to appear correctly in console so I implemented the class solution
+            var allQueries = manhattan.features.Where(n => n.properties.neighborhood.Length > 0)
+                                               .GroupBy(g => g.properties.neighborhood)
+                                               .Select(s => s.First());
+
+            //allQueries = allQueries.Distinct();
 
 
             foreach (var neighborhood in allQueries)
             {
-                Console.WriteLine(neighborhood);
+                Console.WriteLine(neighborhood.properties.neighborhood);
             }
 
             Console.WriteLine("\n\n ----------------------------------------------------------------------------------------------------\n\n");
